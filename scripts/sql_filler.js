@@ -49,7 +49,7 @@ function randomInt(low,high)
     return Math.trunc(r);
 }
 
-function randomFromArr(arr)
+function anyOf(arr)
 {
     return arr[randomInt(0,arr.length-1)];
 }
@@ -133,13 +133,13 @@ function getString(rule)
     if (rule[1] == 'name')
     {
         let r = Math.random();
-        if (lastGender == 'M') return quotes(randomFromArr(maleNames));
-        else return quotes(randomFromArr(femaleNames));
+        if (lastGender == 'M') return quotes(anyOf(maleNames));
+        else return quotes(anyOf(femaleNames));
     }
 
     if (rule[1] == 'surname')
     {              
-        let s = randomFromArr(unisexSurnames);
+        let s = anyOf(unisexSurnames);
         if (lastGender == 'M') return quotes(s);
         else return quotes(s+'a');
     }
@@ -147,7 +147,7 @@ function getString(rule)
     if (rule[1] == 'rand')
     {
         let ret = '';
-        for (let i = 0; i < rule[2]; ++i) ret += randomFromArr(letters);
+        for (let i = 0; i < rule[2]; ++i) ret += anyOf(letters);
         return quotes(ret);
     }
 

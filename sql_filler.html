@@ -41,14 +41,15 @@
 			<br>	
 			<div id="sql-filler-inner-functions-docs" style="display: none;">
 				<ul>
-					<li>function randomDate(start, end) - возвращает случайную дату в диапазоне [start,end]</li>
-					<li>function randomInt(low, high) - возвращает случайное целое число в диапазоне [low,high]</li>
-					<li>function anyOf(arr) - возвращает случайное значение из массива возможных вариантов</li>
-					<li>function quotes(s) - возвращает строку, обернутую в одинарные кавычки</li>
-					<li>var maleNames - массив, содержащий мужские имена</li>
-					<li>var femaleNames - массив, содержащий женские имена</li>
-					<li>var unisexSurnames - массив, содержащий мужские фамилии, которые также подходят женщинам при добавлении окончания 'a'</li>
-					<li>var currRow - номер текущей строки. Не используется в SQL Filler.</li>
+					<li><strong>randomDate(start, end)</strong> - возвращает случайную дату в диапазоне [start,end]</li>
+					<li><strong>function randomInt(low, high)</strong> - возвращает случайное целое число в диапазоне [low,high]</li>
+					<li><strong>function anyOf(arr)</strong> - возвращает случайное значение из массива возможных вариантов</li>
+					<li><strong>function quotes(s)</strong> - возвращает строку, обернутую в одинарные кавычки</li>
+					<li><strong>var maleNames</strong> - массив, содержащий мужские имена</li>
+					<li><strong>var femaleNames</strong> - массив, содержащий женские имена</li>
+					<li><strong>var unisexSurnames</strong> - массив, содержащий мужские фамилии, которые также подходят женщинам при добавлении окончания 'a'</li>
+					<li><strong>var currRow</strong> - номер текущей строки. Не используется в SQL Filler.</li>
+					<li><strong>var lastGender</strong> - последний сгенерированный пол (через str gender)</li>
 				</ul>
 				<a href="javascript:hideSelector('#sql-filler-inner-functions-docs')">Скрыть</a>
 			</div>
@@ -68,9 +69,9 @@
 				Заготовка для случаных имен и фамилий случайных людей:<br>str gender<br>str name<br>str surname<br>
 				<br>enum Ufa Kazan Moscow New-York Washington - случайное значение из вариантов: Ufa, Kazan, Moscow, New-York, Washington<br>
 				<p/>
-					Значение столбца будет вещественным числом между 0 и 1:<br>
-					Поле для ввода правил: <br> js func <p/>
-					Поле для ввода пользовательского JS: <br>function func() <br> { <br> &nbsp;&nbsp;&nbsp;&nbsp; return Math.random(); <br> } <p/>
+				Значение столбца будет вещественным числом между 0 и 1:<br>
+				Поле для ввода правил: <br> js func <p/>
+				Поле для ввода пользовательского JS: <br>function func() <br> { <br> &nbsp;&nbsp;&nbsp;&nbsp; return Math.random(); <br> } <p/>
 				
 				<a href="javascript:hideSelector('#examples')">Скрыть примеры</a>
 		</div>
@@ -93,36 +94,39 @@
 		<textarea id="user-js" cols="50" rows="25" placeholder="Введите свои правила для генерации JS-строк здесь."></textarea>
 
 		<p/>
-		История версий:
-		<ul>
-			<li>2.1 (29 ноября 2019): 
-				<ul>
-					<li>убран тип openstr, вместо него добавлены новые параметры для str: no_quotes, double_quotes.</li> 
-					<li>Текстовые поля теперь используют placeholder вместо предварительного заполнения.</li>
-					<li>Имя таблицы теперь всегда заключено в одинарные кавычки.</li>
-					<li>Изменен дизайн.</li>
-					<li>Функция randomFromArr переименована на anyOf.</li>
-				</ul>
-			</li>
+		<div id="version-history">
+			История версий:
+			<ul>
+				<li>2.1 (29 ноября 2019): 
+					<ul>
+						<li>убран тип openstr, вместо него добавлены новые параметры для str: no_quotes, double_quotes.</li> 
+						<li>Текстовые поля теперь используют placeholder вместо предварительного заполнения.</li>
+						<li>Имя таблицы теперь всегда заключено в одинарные кавычки.</li>
+						<li>Функция randomFromArr переименована на anyOf.</li>
+						<li>Обновлена документация.</li>
+						<li>Изменен дизайн.</li>					
+					</ul>
+				</li>
 
-			<li>2.0 (27 ноября 2019): 
-				<ul><li>добавлен тип js.</li></ul>
-			</li>
+				<li>2.0 (27 ноября 2019): 
+					<ul><li>добавлен тип js.</li></ul>
+				</li>
 
-			<li>1.1 (26 ноября 2019): 
-				<ul>
-					<li>добавлены типы: date, openstr.</li>
-					<li>Добавлено больше имён и фамилий. Обновлена документация.</li>
-					<li>Примеры теперь отображаются на странице вместо alert'a.</li>
-				</ul>
-			</li>
+				<li>1.1 (26 ноября 2019): 
+					<ul>
+						<li>добавлены типы: date, openstr.</li>
+						<li>Добавлено больше имён и фамилий. Обновлена документация.</li>
+						<li>Примеры теперь отображаются на странице вместо alert'a.</li>
+					</ul>
+				</li>
 
-			<li>1.0 (26 ноября 2019): 
-				<ul>
-					<li>начальная версия.</li>
-				</ul>
-			</li>
-		</ul>
+				<li>1.0 (26 ноября 2019): 
+					<ul>
+						<li>начальная версия.</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
 	</div>
 </body>
 </html>

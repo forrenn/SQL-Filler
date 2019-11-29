@@ -5,6 +5,7 @@ function randomDate(start, end)
 
 var lastId = 0;
 var currRow = 0;
+var quoteType = 1;
 function sqlFillerRun()
 {
     lastId = 0;
@@ -17,10 +18,13 @@ function sqlFillerRun()
     let row = '';
     for (let i = 0; i < rowCount; ++i)
     {
-        row = 'INSERT INTO '+tableName+' VALUES (';
+        row = 'INSERT INTO '+"'"+tableName+"'"+' VALUES (';
         for (let j = 0; j < rules.length; ++j)
         {
             let rule = rules[j].split(' ');
+            if (firstOf('no_quotes',rule) != undefined) quoteType = 0;
+            else if (firstOf('double_quotes',rule) != undefined) quoteType = 2;
+            else quoteType = 1;
             row += getRowValue(rule);
             if (j < rules.length - 1) row+=', ';
         }
@@ -29,6 +33,13 @@ function sqlFillerRun()
     }
 
     document.getElementById("result-memo").value = total;
+}
+
+//returns the first inclusion of el in arr, or undefined on failure
+function firstOf(el, arr)
+{
+    for (let i = 0; i < arr.length; ++i) if (arr[i]==el) return i;
+    return undefined;
 }
 
 function randomInt(low,high)
@@ -69,11 +80,15 @@ function getInt(rule)
 
 var lastGender = '';
 var letters = 'abcdefghijklmnopqrstuvwxyz';
-var isOpen = false;
 
 function quotes(s)
 {
-    return isOpen ? s.toString() : ("'"+s+"'");
+    let q;
+    if (quoteType == 0) q = '';
+    if (quoteType == 1) q = "'";
+    if (quoteType == 2) q = '"';
+
+    return q+s+q;
 }
 
 function getDate(rule)
